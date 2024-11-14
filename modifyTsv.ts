@@ -14,6 +14,7 @@ const processFile = async () => {
   });
 
   let id = 1; // Start ID from 1
+  console.log(`\x1b[33mStarting Processing ...\x1b[0m`);
 
   // Write the new header
   outputStream.write(`ID\tAddress\tBalance\n`);
@@ -25,10 +26,12 @@ const processFile = async () => {
     const newLine = `${id}\t${columns.join("\t")}\n`;
     outputStream.write(newLine);
     id++;
+
+    console.log(`\x1b[33mUpdated Line (${id}) ...\x1b[0m`);
   }
 
   outputStream.end();
-  console.log("File processing completed.");
+  console.log(`\x1b[33mCompleted Processing ...\x1b[0m`);
 };
 
 processFile().catch(console.error);
